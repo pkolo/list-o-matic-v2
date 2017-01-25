@@ -1,9 +1,15 @@
 class VoteResults extends React.Component {
-
-  render() {
-    return (
-      <h3>Hello again</h3>
-    )
+  constructor() {
+    super()
   }
 
+  render() {
+    return(
+      <div className="results-container">
+        {this.props.albums.map( (album) =>
+          <VoteResult album={album} key={album.id}/>
+        )}
+      </div>
+    )
+  }
 }

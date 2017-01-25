@@ -11,7 +11,6 @@ class Ballot extends React.Component {
     this.setState({
       results: results
     })
-    debugger
   }
 
   render() {
@@ -19,7 +18,7 @@ class Ballot extends React.Component {
       <div className="ballot-container">
         <Votes />
         <VoteForm updateResults={this.getResults}/>
-        {this.state.results.length != 0 && <VoteResults />}
+        {this.state.results.length != 0 && <VoteResults albums={this.state.results} />}
       </div>
     )
   }
