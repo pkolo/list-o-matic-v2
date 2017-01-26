@@ -21,7 +21,6 @@ class Ballot extends React.Component {
   }
 
   render() {
-    debugger
     return (
       <div className="ballot-container">
         {this.state.ballot && <Votes votes={this.state.votes} />}

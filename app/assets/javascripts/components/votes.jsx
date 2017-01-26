@@ -2,7 +2,11 @@ class Votes extends React.Component {
 
   render() {
     return(
-      <h1>Hello world</h1>
+      <div className="votes-container">
+        {this.props.votes.map( (vote) =>
+          <Vote vote={vote} key={vote.album_id}/>
+        )}
+      </div>
     )
   }
 
