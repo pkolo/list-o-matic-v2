@@ -5,9 +5,13 @@ class BallotsController < ApplicationController
 
   def create
     @ballot = Ballot.new
+    @ballot.list = List.find(params[:list_id].to_i)
+    @ballot.save
+    redirect_to @ballot
   end
 
   def show
+    @ballot = Ballot.find(params[:id])
   end
 
   def discog_search
