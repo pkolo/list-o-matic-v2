@@ -9,5 +9,6 @@ Rails.application.routes.draw do
   end
 
   post '/discog_search', to: 'ballots#discog_search'
+  post '/album_info', to: 'ballots#album_info'
 
 end
