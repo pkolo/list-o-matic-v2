@@ -13,7 +13,7 @@ class VotesController < ApplicationController
     end
 
     if @vote.save
-      render json: get_album_data(@vote.album_id)
+      render json: { rank: @vote.rank, album_data: get_album_data(@vote.album_id) }
     else
       render json: { errors: @vote.errors.full_messages }, status: 422
     end

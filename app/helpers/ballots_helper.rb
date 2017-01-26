@@ -8,7 +8,7 @@ module BallotsHelper
       faraday.response :json
     end
 
-    response = conn.get('search', release_title: params[:album], artist: params[:artist], token: ENV["DISCOG_TOKEN"], per_page: 5)
+    response = conn.get('search', release_title: params[:album], artist: params[:artist], type: 'release', token: ENV["DISCOG_TOKEN"], per_page: 5)
     response.body
   end
 
