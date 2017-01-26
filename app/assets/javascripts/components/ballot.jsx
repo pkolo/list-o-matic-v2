@@ -7,6 +7,13 @@ class Ballot extends React.Component {
     this.getResults = this.getResults.bind(this)
   }
 
+  componentDidMount() {
+    this.setState({
+      ballot: this.props.ballot,
+      votes: this.props.votes
+    })
+  }
+
   getResults(results) {
     this.setState({
       results: results
@@ -14,9 +21,10 @@ class Ballot extends React.Component {
   }
 
   render() {
+    debugger
     return (
       <div className="ballot-container">
-        <Votes />
+        {this.state.ballot && <Votes votes={this.state.votes} />}
         <VoteForm updateResults={this.getResults}/>
         {this.state.results.length != 0 && <VoteResults albums={this.state.results} />}
       </div>

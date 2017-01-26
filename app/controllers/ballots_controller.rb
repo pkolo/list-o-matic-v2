@@ -12,6 +12,7 @@ class BallotsController < ApplicationController
 
   def show
     @ballot = Ballot.find(params[:id])
+    render component: 'Ballot', props: { ballot: @ballot, votes: @ballot.votes }
   end
 
   def discog_search
