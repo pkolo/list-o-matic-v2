@@ -1,5 +1,7 @@
 class VotesController < ApplicationController
 
+  include BallotsHelper
+
   def create
     @ballot = Ballot.find(params[:ballot_id])
     @vote = Vote.new(ballot: @ballot, album_id: params[:album_id])
@@ -11,7 +13,7 @@ class VotesController < ApplicationController
     end
 
     if @vote.save
-      render json: @vote
+      render json: get_album_data(@vote.album_id)
     else
       render json: { errors: @vote.errors.full_messages }, status: 422
     end
