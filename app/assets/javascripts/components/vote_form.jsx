@@ -17,6 +17,8 @@ class VoteForm extends React.Component {
     })
     .done(function(r) {
       this.props.updateResults(r["results"])
+      this.refs.data.album.value = ""
+      this.refs.data.artist.value = ""
     }.bind(this))
   }
 

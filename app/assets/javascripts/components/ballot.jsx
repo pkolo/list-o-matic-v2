@@ -17,7 +17,8 @@ class Ballot extends React.Component {
 
   addVote(r) {
     this.setState({
-      votes: this.state.votes.concat([r])
+      votes: this.state.votes.concat([r]),
+      results: []
     })
   }
 
