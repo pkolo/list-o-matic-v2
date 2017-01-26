@@ -13,8 +13,8 @@ class VoteResult extends React.Component {
       data: $.param(album)
     })
     .done(function(r) {
-      console.log(r)
-    })
+      this.props.voteHelper(r)
+    }.bind(this))
   }
 
   render(){
