@@ -1,17 +1,19 @@
 class VoteResult extends React.Component {
   constructor() {
     super()
-    
+
     this.handleClick = this.handleClick.bind(this)
   }
 
   handleClick(e) {
-    debugger
-    let album = { album_id: this.props.album.id}
+    let album = { album_id: this.props.album.id }
     $.ajax({
       url: '/ballots/1/votes',
       method: 'post',
       data: $.param(album)
+    })
+    .done(function(r) {
+      console.log(r)
     })
   }
 
