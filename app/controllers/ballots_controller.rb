@@ -3,8 +3,11 @@ class BallotsController < ApplicationController
 
   include BallotsHelper
 
-  def new
+  def create
     @ballot = Ballot.new
+  end
+
+  def show
   end
 
   def discog_search
