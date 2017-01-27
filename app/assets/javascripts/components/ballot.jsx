@@ -31,7 +31,7 @@ class Ballot extends React.Component {
   render() {
     return (
       <div className="ballot-container">
-        {this.state.ballot && <Votes votes={this.state.votes} />}
+        {this.state.ballot && <Votes votes={this.state.votes} ballotID={this.state.ballot.id} />}
         <VoteForm updateResults={this.getResults}/>
         {this.state.results.length != 0 && <VoteResults albums={this.state.results} ballotID={this.state.ballot.id} voteHelper={this.addVote} />}
       </div>

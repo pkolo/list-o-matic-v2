@@ -31,4 +31,7 @@ class BallotsController < ApplicationController
     render json: results
   end
 
+  def sort_votes
+  end
+
 end

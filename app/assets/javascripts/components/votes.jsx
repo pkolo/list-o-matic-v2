@@ -4,7 +4,12 @@ class Votes extends React.Component {
   }
 
   componentDidMount() {
-    $('.votes-container').sortable()
+    let ballotID = this.props.ballotID
+    $('.votes-container').sortable({
+      update: function() {
+        $.post('/ballots/'+ballotID+'/sort_votes', $('.votes-container').sortable('serialize'))
+      }
+    })
   }
 
   render() {
