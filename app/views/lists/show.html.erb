@@ -7,11 +7,14 @@
 <% if @list.voters.include?(current_user) %>
   <% @ballot = @list.ballots.find_by(voter: current_user) %>
   <%= link_to "Adjust your ballot", @ballot %>
-<% else %>
+
+<% elsif user_signed_in? %>
   <form class="add-ballot-btn" action="/ballots" method="post">
     <input type="hidden" name="list_id" value="<%= @list.id %>">
     <input type="submit" value="Create your ballot">
   </form>
+<% else %>
+  <%= link_to "Log in to contribute", '/login' %>
 <% end %>
 <br><br>
 Contributors so far:
