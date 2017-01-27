@@ -1,4 +1,11 @@
 class Votes extends React.Component {
+  constructor() {
+    super()
+  }
+
+  componentDidMount() {
+    $('.votes-container').sortable()
+  }
 
   render() {
     return(
