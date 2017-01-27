@@ -32,7 +32,9 @@ class BallotsController < ApplicationController
   end
 
   def sort_votes
-    binding.pry
+    params[:vote].each_with_index do |id, index|
+      Vote.find(id).update_attribute(:rank, index+1)
+    end
   end
 
 end
