@@ -8,7 +8,7 @@ class VoteResult extends React.Component {
   handleClick(e) {
     let album = { album_id: this.props.album.id }
     $.ajax({
-      url: '/ballots/1/votes',
+      url: '/ballots/'+this.props.ballotID+'/votes',
       method: 'post',
       data: $.param(album)
     })
