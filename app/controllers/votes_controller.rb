@@ -9,7 +9,7 @@ class VotesController < ApplicationController
     if @ballot.votes.empty?
       @vote.rank = 1
     else
-      @vote.rank = (@ballot.votes.last.id + 1)
+      @vote.rank = (@ballot.votes.last.rank + 1)
     end
 
     if @vote.save
