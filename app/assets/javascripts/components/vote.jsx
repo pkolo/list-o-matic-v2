@@ -4,8 +4,9 @@ class Vote extends React.Component {
   }
 
   render() {
+    let voteID = "vote_" + this.props.vote.id
     return (
-      <div className="vote">
+      <div className="vote" id={voteID} >
         {this.props.vote.rank}. {this.props.vote.album_data.artists[0]["name"]} - {this.props.vote.album_data.title}
       </div>
     )
