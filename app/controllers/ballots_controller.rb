@@ -32,9 +32,12 @@ class BallotsController < ApplicationController
   end
 
   def sort_votes
+    @ballot = Ballot.find(params[:ballot_id])
     params[:vote].each_with_index do |id, index|
       Vote.find(id).update_attribute(:rank, index+1)
     end
+    @votes = @ballot.votes.map { |vote| { rank: vote.rank, id: vote.id, album_data: get_album_data(vote.album_id) }}
+    render json: [@votes.sort_by { |vote| vote[:rank]}]
   end
 
 end

@@ -17,6 +17,7 @@
 //= require react
 //= require jquery-ui
 //= require react_ujs
+//= require lodash
 //= require components
 //= require_tree .
 //= require ballots
