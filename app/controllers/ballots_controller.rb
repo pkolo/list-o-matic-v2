@@ -6,6 +6,7 @@ class BallotsController < ApplicationController
   def create
     @ballot = Ballot.new
     @ballot.list = List.find(params[:list_id].to_i)
+    @ballot.voter = current_user
     @ballot.save
     redirect_to @ballot
   end
