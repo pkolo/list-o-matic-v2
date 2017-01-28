@@ -20,12 +20,16 @@ class Votes extends React.Component {
     })
   }
 
+  sortedVotes() {
+    let votes = _.sortBy(this.props.votes, 'rank')
+    debugger
+  }
+
   render() {
+    let sorted = this.sortedVotes()
     return(
       <div className="votes-container">
-        {this.props.votes.map( (vote, i) =>
-          <Vote vote={vote} key={vote.album_data.id} />
-        )}
+
       </div>
     )
   }
