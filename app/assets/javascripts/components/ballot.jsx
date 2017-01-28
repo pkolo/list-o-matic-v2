@@ -17,13 +17,14 @@ class Ballot extends React.Component {
   }
 
   updateVotes() {
-    var newVotes = _.clone(this.state.votes, true)
-    var $node = $('.votes-container')
+    let newVotes = _.clone(this.state.votes, true)
+    let $node = $('.votes-container')
+    let ballotID = this.state.ballot.id
 
-    var ids = $node.sortable('toArray', {attribute: 'data-id'})
+    let ids = $node.sortable('toArray', {attribute: 'data-id'})
 
     ids.forEach((id, index) => {
-      var vote = _.find(newVotes, {id: parseInt(id)})
+      let vote = _.find(newVotes, {id: parseInt(id)})
       vote.rank = index + 1
     })
 
@@ -31,6 +32,15 @@ class Ballot extends React.Component {
 
     this.setState({
       votes: newVotes
+    })
+
+    $.ajax({
+      url: '/ballots/'+ballotID+'/sort_votes',
+      method: 'post',
+      data: $node.sortable('serialize')
+    })
+    .done(function(r) {
+      console.log(r)
     })
   }
 
