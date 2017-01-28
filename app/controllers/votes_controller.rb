@@ -5,13 +5,7 @@ class VotesController < ApplicationController
   def create
     @ballot = Ballot.find(params[:ballot_id])
     @vote = Vote.new(ballot: @ballot, album_id: params[:album_id])
-
-    if @ballot.votes.empty?
-      @vote.rank = 1
-    else
-      @vote.rank = (@ballot.votes.order("rank ASC").last.rank
- + 1)
-    end
+    @vote.rank = @ballot.votes.length + 1
 
     if @vote.save
       render json: { rank: @vote.rank, album_data: get_album_data(@vote.album_id) }
