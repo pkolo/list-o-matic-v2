@@ -5,6 +5,7 @@ class Vote extends React.Component {
       showDelete: false
     })
     this.handleHover = this.handleHover.bind(this)
+    this.handleClick = this.handleClick.bind(this)
   }
 
   handleHover() {
@@ -19,6 +20,11 @@ class Vote extends React.Component {
     }
   }
 
+  handleClick() {
+    let vote = this.props.vote
+    console.log("hello from "+vote.album_data.title)
+  }
+
   render() {
     let voteID = "vote_" + this.props.vote.id
     return (
@@ -26,7 +32,7 @@ class Vote extends React.Component {
         <p>
           {this.props.vote.rank}. {this.props.vote.album_data.artists[0]["name"]} - {this.props.vote.album_data.title}
         </p>
-          {this.state.showDelete && <p>x</p>}
+          {this.state.showDelete && <button className="delete-btn" onClick={this.handleClick}>x</button>}
       </div>
     )
   }
