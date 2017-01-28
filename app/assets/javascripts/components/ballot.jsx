@@ -7,6 +7,7 @@ class Ballot extends React.Component {
     this.getResults = this.getResults.bind(this)
     this.addVote = this.addVote.bind(this)
     this.updateVotes = this.updateVotes.bind(this)
+    this.deleteVote = this.deleteVote.bind(this)
   }
 
   componentDidMount() {
@@ -49,7 +50,9 @@ class Ballot extends React.Component {
   }
 
   deleteVote(vote) {
-    console.log("hello from "+vote.album_data.title)
+    this.setState({
+      votes: this.state.votes.filter((_, i) => i !== vote.rank)
+    })
   }
 
   getResults(results) {
