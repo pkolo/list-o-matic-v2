@@ -32,7 +32,7 @@ class Ballot extends React.Component {
     $node.sortable('cancel')
 
     this.setState({
-      votes: newVotes
+      votes: _.sortBy(newVotes, 'rank')
     })
 
     $.ajax({
@@ -40,8 +40,6 @@ class Ballot extends React.Component {
       method: 'post',
       data: $node.sortable('serialize')
     })
-
-    console.log(this.state.votes)
   }
 
   addVote(r) {
@@ -52,10 +50,23 @@ class Ballot extends React.Component {
   }
 
   deleteVote(vote) {
-    index = this.state.votes.indexOf(vote)
-    this.setState({
-      votes: this.state.votes.filter((_, i) => i !== index)
+    let ballotID = this.state.ballot.id
+    let voteID = vote.id
+
+    $.ajax({
+      url: '/ballots/'+ballotID+'/votes/'+voteID,
+      method: 'delete'
     })
+    .done(function(r) {
+      console.log(r)
+    })
+
+    index = this.state.votes.indexOf(vote)
+    this.setState(
+      {
+        votes: this.state.votes.filter((_, i) => i !== index)
+      }
+    )
   }
 
   getResults(results) {
@@ -67,9 +78,13 @@ class Ballot extends React.Component {
   render() {
     return (
       <div className="ballot-container">
+
         {this.state.ballot && <Votes votes={this.state.votes} ballotID={this.state.ballot.id} onRankChange={this.updateVotes} handleSortableUpdate={this.updateVotes} handleDelete={this.deleteVote} />}
+
         <VoteForm updateResults={this.getResults}/>
+
         {this.state.results.length != 0 && <VoteResults albums={this.state.results} ballotID={this.state.ballot.id} voteHelper={this.addVote} />}
+
       </div>
     )
   }
