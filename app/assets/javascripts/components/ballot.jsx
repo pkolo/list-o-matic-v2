@@ -39,9 +39,6 @@ class Ballot extends React.Component {
       method: 'post',
       data: $node.sortable('serialize')
     })
-    .done(function(r) {
-      console.log(r)
-    })
   }
 
   addVote(r) {

@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   resources :lists, only: [:new, :create, :show, :index]
 
   resources :ballots, only: [:new, :create, :show] do
-    resources :votes, only: [:create]
+    resources :votes, only: [:create, :destroy]
   end
 
   post '/ballots/:ballot_id/sort_votes', to: 'ballots#sort_votes'
