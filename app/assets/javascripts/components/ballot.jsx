@@ -40,6 +40,8 @@ class Ballot extends React.Component {
       method: 'post',
       data: $node.sortable('serialize')
     })
+
+    console.log(this.state.votes)
   }
 
   addVote(r) {
@@ -50,8 +52,9 @@ class Ballot extends React.Component {
   }
 
   deleteVote(vote) {
+    index = this.state.votes.indexOf(vote)
     this.setState({
-      votes: this.state.votes.filter((_, i) => i !== vote.rank)
+      votes: this.state.votes.filter((_, i) => i !== index)
     })
   }
 
