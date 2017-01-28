@@ -8,7 +8,7 @@ class VotesController < ApplicationController
     @vote.rank = @ballot.votes.length + 1
 
     if @vote.save
-      render json: { rank: @vote.rank, album_data: get_album_data(@vote.album_id) }
+      render json: { rank: @vote.rank, id: @vote.id, album_data: get_album_data(@vote.album_id) }
     else
       render json: { errors: @vote.errors.full_messages }, status: 422
     end
