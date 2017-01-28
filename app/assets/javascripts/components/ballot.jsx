@@ -6,12 +6,31 @@ class Ballot extends React.Component {
     }
     this.getResults = this.getResults.bind(this)
     this.addVote = this.addVote.bind(this)
+    this.updateVotes = this.updateVotes.bind(this)
   }
 
   componentDidMount() {
     this.setState({
       ballot: this.props.ballot,
       votes: this.props.votes
+    })
+  }
+
+  updateVotes() {
+    var newVotes = _.clone(this.state.votes, true)
+    var $node = $('.votes-container')
+
+    var ids = $node.sortable('toArray', {attribute: 'data-id'})
+
+    ids.forEach((id, index) => {
+      var vote = _.find(newVotes, {id: parseInt(id)})
+      vote.rank = index + 1
+    })
+
+    $node.sortable('cancel')
+
+    this.setState({
+      votes: newVotes
     })
   }
 
@@ -31,7 +50,7 @@ class Ballot extends React.Component {
   render() {
     return (
       <div className="ballot-container">
-        {this.state.ballot && <Votes votes={this.state.votes} />}
+        {this.state.ballot && <Votes votes={this.state.votes} ballotID={this.state.ballot.id} onRankChange={this.updateVotes} handleSortableUpdate={this.updateVotes} />}
         <VoteForm updateResults={this.getResults}/>
         {this.state.results.length != 0 && <VoteResults albums={this.state.results} ballotID={this.state.ballot.id} voteHelper={this.addVote} />}
       </div>

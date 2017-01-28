@@ -14,8 +14,8 @@ class BallotsController < ApplicationController
   def show
     @ballot = Ballot.find(params[:id])
     if @ballot.voter == current_user
-      @votes = @ballot.votes.map { |vote| { rank: vote.rank, album_data: get_album_data(vote.album_id) }}
-      render component: 'Ballot', props: { ballot: @ballot, votes: @votes.sort_by { |vote| vote[:rank]} }
+      @votes = @ballot.votes.map { |vote| { rank: vote.rank, id: vote.id, album_data: get_album_data(vote.album_id) }}
+      render component: 'Ballot', props: { ballot: @ballot, votes: @votes }
     else
       render json: {error: 'Unauthorized'}, status: 403
     end
@@ -29,6 +29,15 @@ class BallotsController < ApplicationController
   def album_info
     results = get_album_data(params[:album_id])
     render json: results
+  end
+
+  def sort_votes
+    @ballot = Ballot.find(params[:ballot_id])
+    params[:vote].each_with_index do |id, index|
+      Vote.find(id).update_attribute(:rank, index+1)
+    end
+    @votes = @ballot.votes.map { |vote| { rank: vote.rank, id: vote.id, album_data: get_album_data(vote.album_id) }}
+    render json: @votes
   end
 
 end
