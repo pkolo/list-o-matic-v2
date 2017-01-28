@@ -1,43 +1,17 @@
 class Votes extends React.Component {
   constructor() {
     super()
-    this.state = ({
-      votes: []
-    })
-    this.handleSortableUpdate = this.handleSortableUpdate.bind(this)
   }
 
   componentDidMount() {
     $(ReactDOM.findDOMNode(this)).sortable({
       items: '.vote',
-      update: this.handleSortableUpdate
-    })
-
-    this.setState({
-      votes: this.props.votes
-    })
-  }
-
-  handleSortableUpdate() {
-    var newVotes = _.clone(this.state.votes, true)
-    var $node = $(ReactDOM.findDOMNode(this))
-
-    var ids = $node.sortable('toArray', {attribute: 'data-id'})
-
-    ids.forEach((id, index) => {
-      var vote = _.find(newVotes, {id: parseInt(id)})
-      vote.rank = index + 1
-    })
-
-    $node.sortable('cancel')
-
-    this.setState({
-      votes: newVotes
+      update: this.props.handleSortableUpdate
     })
   }
 
   sortedVotes() {
-    let votes = _.sortBy(this.state.votes, 'rank')
+    let votes = _.sortBy(this.props.votes, 'rank')
     return votes
   }
 
