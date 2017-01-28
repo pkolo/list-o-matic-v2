@@ -22,7 +22,7 @@ class Vote extends React.Component {
 
   handleClick() {
     let vote = this.props.vote
-    console.log("hello from "+vote.album_data.title)
+    this.props.handleDelete(vote)
   }
 
   render() {

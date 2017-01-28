@@ -48,6 +48,10 @@ class Ballot extends React.Component {
     })
   }
 
+  deleteVote(vote) {
+    console.log("hello from "+vote.album_data.title)
+  }
+
   getResults(results) {
     this.setState({
       results: results
@@ -57,7 +61,7 @@ class Ballot extends React.Component {
   render() {
     return (
       <div className="ballot-container">
-        {this.state.ballot && <Votes votes={this.state.votes} ballotID={this.state.ballot.id} onRankChange={this.updateVotes} handleSortableUpdate={this.updateVotes} />}
+        {this.state.ballot && <Votes votes={this.state.votes} ballotID={this.state.ballot.id} onRankChange={this.updateVotes} handleSortableUpdate={this.updateVotes} handleDelete={this.deleteVote} />}
         <VoteForm updateResults={this.getResults}/>
         {this.state.results.length != 0 && <VoteResults albums={this.state.results} ballotID={this.state.ballot.id} voteHelper={this.addVote} />}
       </div>
