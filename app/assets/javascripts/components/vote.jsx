@@ -20,7 +20,7 @@ class Vote extends React.Component {
     }
   }
 
-  handleClick() {
+  handleClick(e) {
     let vote = this.props.vote
     this.props.handleDelete(vote)
   }

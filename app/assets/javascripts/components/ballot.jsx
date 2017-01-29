@@ -51,10 +51,10 @@ class Ballot extends React.Component {
 
   updateUponDeletion() {
     let newVotes = _.clone(this.state.votes, true)
+    newVotes = _.sortBy(newVotes, 'rank')
+
     let $node = $('.votes-container')
     let ballotID = this.state.ballot.id
-
-    newVotes = _.sortBy(newVotes, 'rank')
     let ids = _.map(newVotes, 'id')
 
     ids.forEach((id, index) => {
@@ -62,7 +62,9 @@ class Ballot extends React.Component {
       vote.rank = index + 1
     })
 
-    $node.sortable('cancel')
+    let serializedVotes = _(ids)
+      .map(n => "vote[]="+n)
+      .join('&')
 
     this.setState({
       votes: newVotes
@@ -71,7 +73,7 @@ class Ballot extends React.Component {
     $.ajax({
       url: '/ballots/'+ballotID+'/sort_votes',
       method: 'post',
-      data: $node.sortable('serialize')
+      data: serializedVotes
     })
   }
 
@@ -90,11 +92,13 @@ class Ballot extends React.Component {
     let newVotes = this.state.votes
     newVotes.splice(index, 1)
 
+    $('.votes-container').remove('#vote_'+voteID)
+
     this.setState(
       {
-        votes: newVotes
+        votes: _.sortBy(newVotes, 'rank')
       },
-      this.updateUponDeletion()
+      this.updateUponDeletion
     )
   }
 
