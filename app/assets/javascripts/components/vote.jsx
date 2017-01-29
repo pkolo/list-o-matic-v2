@@ -33,12 +33,12 @@ class Vote extends React.Component {
           {this.props.vote.rank}
         </div>
 
-        <div className="col-md-9 vote-info">
+        <div className="col-md-10 vote-info">
           <p className="title">{this.props.vote.album_data.artists[0]["name"]} - {this.props.vote.album_data.title}</p>
           <p className="other-album-info">{this.props.vote.album_data.year} | {this.props.vote.album_data.labels[0]["name"]}</p>
         </div>
 
-        <div className="col-md-1">
+        <div className="delete-btn">
           {this.state.showDelete && <button onClick={this.handleClick}>x</button>}
         </div>
       </div>
