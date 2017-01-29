@@ -29,12 +29,13 @@ class Vote extends React.Component {
     let voteID = "vote_" + this.props.vote.id
     return (
       <div className="vote row" data-id={this.props.vote.id} id={voteID} onMouseEnter={this.handleHover} onMouseLeave={this.handleHover} >
-        <div className="rank col-md-2">
+        <div className="rank col-md-1">
           {this.props.vote.rank}
         </div>
 
-        <div className="col-md-9">
-          {this.props.vote.album_data.artists[0]["name"]} - {this.props.vote.album_data.title}
+        <div className="col-md-9 vote-info">
+          <p className="title">{this.props.vote.album_data.artists[0]["name"]} - {this.props.vote.album_data.title}</p>
+          <p className="other-album-info">{this.props.vote.album_data.year} | {this.props.vote.album_data.labels[0]["name"]}</p>
         </div>
 
         <div className="col-md-1">
