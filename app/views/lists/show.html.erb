@@ -9,12 +9,12 @@
       <% end %>
 
       <% if @list.owner == current_user && @list.open %>
-        
+        <p><%= link_to "Close this list...", list_close_path(@list) %></p>
       <% end %>
 
       <% if @list.voters.include?(current_user) %>
         <% @ballot = @list.ballots.find_by(voter: current_user) %>
-        <%= link_to "Adjust your ballot", @ballot %>
+        <p><%= link_to "Adjust your ballot", @ballot %></p>
 
       <% elsif user_signed_in? %>
         <form class="add-ballot-btn" action="/ballots" method="post">
@@ -22,16 +22,15 @@
           <input type="submit" value="Create your ballot">
         </form>
       <% else %>
-        <%= link_to "Log in to contribute", '/login' %>
+        <p><%= link_to "Log in to contribute", '/login' %></p>
       <% end %>
-      <br><br>
-      <p>
-        Created by: <%= @list.owner.username %>
-      </p>
-      Contributors so far:
+      <p>Created by: <%= @list.owner.username %></p>
+
+      <p>Contributors so far:
       <% @list_data[:voters].each do |voter| %>
         <a href="/ballots/<%= voter[:ballot_id] %>"><%= voter[:username] %></a>
       <% end %>
+    </p>
     </div>
 
     <div class="col-md-9">

@@ -28,7 +28,7 @@ class ListsController < ApplicationController
   end
 
   def close_list
-    @list = List.find(params[:id])
+    @list = List.find(params[:list_id])
     if @list.owner == current_user
       @list.open = false
       @list.save
