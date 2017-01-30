@@ -21,6 +21,9 @@
         <%= link_to "Log in to contribute", '/login' %>
       <% end %>
       <br><br>
+      <p>
+        Created by: <%= @list.owner.username %>
+      </p>
       Contributors so far:
       <% @list_data[:voters].each do |voter| %>
         <a href="/ballots/<%= voter[:ballot_id] %>"><%= voter[:username] %></a>
