@@ -20,8 +20,9 @@ class VoteResult extends React.Component {
   render(){
     return(
       <div className="result">
-        {this.props.album.title} - {this.props.album.label[0]} ({this.props.album.year})
-        <button className="add-btn" onClick={this.handleClick}>Add</button>
+        <p>{this.props.album.title} ({this.props.album.year})</p>
+        <p>{this.props.album.label[0]} / 
+        <button className="add-btn" onClick={this.handleClick}>+</button></p>
       </div>
     )
   }

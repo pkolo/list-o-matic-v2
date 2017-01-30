@@ -31,10 +31,26 @@
     width: 20px;
   }
 
+  .vote-form h4 {
+    margin-top: 0px;
+  }
+
+  .result {
+    margin-bottom: 10px;
+    border: 1px black solid;
+    padding: 5px;
+  }
+
+  input {
+    display: block;
+    margin-bottom: 10px;
+    width: 75%;
+  }
+
   .vote {
     position: relative;
-    width: 95%;
     margin-bottom: 10px;
+    margin-right: 5px;
     background-color: #fff;
     border: 1px black solid;
     padding-top:10px;

@@ -112,13 +112,14 @@ class Ballot extends React.Component {
     return (
       <div className="ballot-container row">
 
-        <div className="col-md-3">
+        <div className="col-md-4 vote-form">
+          <h4>Add an album:</h4>
           <VoteForm updateResults={this.getResults}/>
 
           {this.state.results.length != 0 && <VoteResults albums={this.state.results} ballotID={this.state.ballot.id} voteHelper={this.addVote} />}
         </div>
 
-        <div className="col-md-9">
+        <div className="col-md-8">
           {this.state.ballot && <Votes votes={this.state.votes} ballotID={this.state.ballot.id} onRankChange={this.updateVotes} handleSortableUpdate={this.updateVotes} handleDelete={this.deleteVote} />}
         </div>
 

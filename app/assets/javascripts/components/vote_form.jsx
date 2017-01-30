@@ -25,8 +25,8 @@ class VoteForm extends React.Component {
   render() {
     return (
       <form id="album_search" action="/discog_search" method="post" onSubmit={this.handleSubmit} ref="data">
-        <input type="text" name="artist" placeholder="artist" />
-        <input type="text" name="album" placeholder="album" />
+        <input type="text" name="album" placeholder="album title" />
+        <input type="text" name="artist" placeholder="artist (optional)" />
         <input id="btn" type="submit" value="submit" />
       </form>
     )
