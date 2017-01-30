@@ -1,11 +1,29 @@
-<h1>Open Lists</h1>
+<% if !@open_lists.empty? %>
+  <h1>Open Lists</h1>
 
-<div class="lists-container">
-  <% @lists.each do |list| %>
-    <div class="list-link">
-      <%= link_to list.title, list %>
-    </div>
-  <% end %>
-</div>
+  <div class="lists-container">
+    <% @open_lists.each do |list| %>
+      <div class="list-link">
+        <%= link_to list.title, list %>, created by <%= list.owner.username %>
+      </div>
+    <% end %>
+  </div>
+<% end %>
 
-<%= link_to "...Open a new list", new_list_url %>
+<% if !@closed_lists.empty? %>
+  <h1>Closed Lists</h1>
+
+  <div class="lists-container">
+    <% @closed_lists.each do |list| %>
+      <div class="list-link">
+        <%= link_to list.title, list %>, created by <%= list.owner.username %>
+      </div>
+    <% end %>
+  </div>
+<% end %>
+
+<% if user_signed_in? %>
+  <div class="new-list">
+    <%= link_to "...Open a new list", new_list_url %>
+  </div>
+<% end %>

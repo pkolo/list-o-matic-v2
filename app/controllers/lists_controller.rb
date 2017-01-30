@@ -3,7 +3,8 @@ class ListsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
-    @lists = List.all
+    @open_lists = List.where(open: true)
+    @closed_lists = List.where(open: false)
   end
 
   def new
@@ -24,6 +25,17 @@ class ListsController < ApplicationController
   def show
     @list = List.find(params[:id])
     @list_data = @list.list_to_json
+  end
+
+  def close_list
+    @list = List.find(params[:list_id])
+    if @list.owner == current_user
+      @list.open = false
+      @list.save
+      redirect_to @list
+    else
+      render json: {error: "unauthorized"}
+    end
   end
 
   protected
