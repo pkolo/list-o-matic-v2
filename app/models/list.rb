@@ -13,7 +13,7 @@ class List < ApplicationRecord
     json = {
       id: self.id,
       title: self.title,
-      voters: self.voters.select(:id, :username),
+      voters: self.get_list_voters,
       results: self.get_list_results
     }
   end
@@ -32,6 +32,13 @@ class List < ApplicationRecord
         points: points,
         voters: self.get_album_voters(album_id)
       }
+    end
+  end
+
+  def get_list_voters
+    self.voters.inject([]) do |memo, voter|
+      ballot = voter.ballots.find_by(list: self)
+      memo << { id: voter.id, ballot_id: ballot.id, username: voter.username }
     end
   end
 

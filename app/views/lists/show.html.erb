@@ -22,7 +22,9 @@
       <% end %>
       <br><br>
       Contributors so far:
-      <%= @list.voters.pluck(:username).join(", ") %>
+      <% @list_data[:voters].each do |voter| %>
+        <a href="/ballots/<%= voter[:ballot_id] %>"><%= voter[:username] %></a>
+      <% end %>
     </div>
 
     <div class="col-md-9">
