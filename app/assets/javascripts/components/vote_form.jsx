@@ -17,8 +17,8 @@ class VoteForm extends React.Component {
       data: $.param(query)
     })
     .done(function(r) {
-      debugger
       this.props.updateResults(r["results"]["results"])
+      this.props.handleMatch(r["match"])
       this.refs.data.album.value = ""
       this.refs.data.artist.value = ""
     }.bind(this))
