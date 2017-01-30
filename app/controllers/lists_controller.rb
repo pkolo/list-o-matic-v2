@@ -1,4 +1,5 @@
 class ListsController < ApplicationController
+
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
@@ -22,6 +23,8 @@ class ListsController < ApplicationController
 
   def show
     @list = List.find(params[:id])
+    x = @list.tally_results
+    binding.pry
   end
 
   protected
