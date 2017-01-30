@@ -5,7 +5,7 @@ class ListResult extends React.Component {
 
   getVoterLinks() {
     let voters = this.props.result.voters.map( (voter) =>
-      <a href={"/ballots/"+voter.ballot_id}>{voter.username} </a>
+      <a href={"/ballots/"+voter.ballot_id} key={voter.ballot_id}>{voter.username} </a>
     )
     return (
       voters
