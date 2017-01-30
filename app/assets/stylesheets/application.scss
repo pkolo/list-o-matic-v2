@@ -16,31 +16,57 @@
   @import "bootstrap";
 
   body {
-    max-width: 900px;
+    max-width: 1200px;
     margin: 15px auto;
     border: 1px #000 solid;
     padding: 15px;
   }
 
-  button {
-    font-size: 16px;
+  .delete-btn {
+    position: absolute;
+    top:5px;
+    right: 5px;
+    font-size: 12px;
     height: 20px;
-    width: 60px;
+    width: 20px;
   }
 
-  .delete-btn {
-    float: right;
+  .vote-form h4 {
+    margin-top: 0px;
+  }
+
+  .result {
+    margin-bottom: 10px;
+    border: 1px black solid;
+    padding: 5px;
+  }
+
+  input {
+    display: block;
+    margin-bottom: 10px;
+    width: 75%;
   }
 
   .vote {
-    width: 80%;
+    position: relative;
+    margin-bottom: 10px;
+    margin-right: 5px;
     background-color: #fff;
     border: 1px black solid;
-    margin: 10px auto;
-    padding: 15px;
-    font-size: 20px;
+    padding-top:10px;
+    padding-left: 10px;
+    font-size: 1em;
   }
 
   .rank {
-    font-size: 36px;
+    padding: 0px;
+    font-size: 48px;
+  }
+
+  .vote-info {
+    margin-left:20px;
+  }
+
+  .title {
+    font-size:1.4em;
   }
