@@ -24,7 +24,6 @@ class ListsController < ApplicationController
   def show
     @list = List.find(params[:id])
     @list_data = @list.list_to_json
-    render component: 'ListPage', props: { list_data: @list_data }
   end
 
   protected
