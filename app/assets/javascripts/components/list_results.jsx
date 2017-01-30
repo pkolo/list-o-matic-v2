@@ -4,9 +4,11 @@ class ListResults extends React.Component {
   }
 
   render() {
-    let list = this.props.list_data
+    let results = this.props.results
+    debugger
+    
     return (
-      <h1>helloworld</h1>
+      <h1>fuck</h1>
     )
   }
 }
