@@ -13,11 +13,11 @@ class BallotsController < ApplicationController
 
   def show
     @ballot = Ballot.find(params[:id])
+    @votes = @ballot.votes.map { |vote| { rank: vote.rank, id: vote.id, album_data: get_album_data(vote.album_id) }}
     if @ballot.voter == current_user
-      @votes = @ballot.votes.map { |vote| { rank: vote.rank, id: vote.id, album_data: get_album_data(vote.album_id) }}
       render component: 'Ballot', props: { ballot: @ballot, votes: @votes, list: @ballot.list }
     else
-      render json: {error: 'Unauthorized'}, status: 403
+      render component: 'StaticBallot', props: { user: @ballot.voter.username, votes: @votes, list: @ballot.list }
     end
   end
 
