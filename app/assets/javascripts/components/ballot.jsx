@@ -121,12 +121,12 @@ class Ballot extends React.Component {
       <div className="ballot-container row">
 
         <div className="col-md-4 vote-form">
-          <h4>Add an album:</h4>
+          <h4 className="ballot-title">Add an album:</h4>
           <VoteForm updateResults={this.getResults} ballotID={this.props.ballot.id} handleMatch={this.updateMatch} />
 
           {this.state.results.length != 0 && <VoteResults albums={this.state.results} ballotID={this.state.ballot.id} voteHelper={this.addVote} match={this.state.match}/>}
         </div>
-
+        <h4>Your ballot for <a href={"/lists/" + this.props.list.id}>{this.props.list.title}</a></h4>
         <div className="col-md-8">
           {this.state.ballot && <Votes votes={this.state.votes} ballotID={this.state.ballot.id} onRankChange={this.updateVotes} handleSortableUpdate={this.updateVotes} handleDelete={this.deleteVote} />}
         </div>

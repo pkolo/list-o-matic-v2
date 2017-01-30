@@ -15,7 +15,7 @@ class BallotsController < ApplicationController
     @ballot = Ballot.find(params[:id])
     if @ballot.voter == current_user
       @votes = @ballot.votes.map { |vote| { rank: vote.rank, id: vote.id, album_data: get_album_data(vote.album_id) }}
-      render component: 'Ballot', props: { ballot: @ballot, votes: @votes }
+      render component: 'Ballot', props: { ballot: @ballot, votes: @votes, list: @ballot.list }
     else
       render json: {error: 'Unauthorized'}, status: 403
     end
