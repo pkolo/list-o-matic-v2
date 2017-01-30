@@ -23,7 +23,7 @@ class ListsController < ApplicationController
 
   def show
     @list = List.find(params[:id])
-    x = @list.tally_results
+    x = @list.list_to_json
     binding.pry
   end
 
