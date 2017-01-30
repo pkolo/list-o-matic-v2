@@ -18,10 +18,19 @@ class VoteResult extends React.Component {
   }
 
   render(){
+
+    let resultClass = ""
+
+    if (this.props.match[0] == this.props.album.id) {
+      resultClass = "result match"
+    } else {
+      resultClass = "result"
+    }
+
     return(
-      <div className="result">
+      <div className={resultClass}>
         <p>{this.props.album.title} ({this.props.album.year})</p>
-        <p>{this.props.album.label[0]} / 
+        <p>{this.props.album.label[0]} /
         <button className="add-btn" onClick={this.handleClick}>+</button></p>
       </div>
     )

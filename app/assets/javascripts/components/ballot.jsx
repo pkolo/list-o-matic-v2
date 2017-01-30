@@ -2,18 +2,26 @@ class Ballot extends React.Component {
   constructor() {
     super()
     this.state = {
-      results: []
+      results: [],
+      match: []
     }
     this.getResults = this.getResults.bind(this)
     this.addVote = this.addVote.bind(this)
     this.updateVotes = this.updateVotes.bind(this)
     this.deleteVote = this.deleteVote.bind(this)
+    this.updateMatch = this.updateMatch.bind(this)
   }
 
   componentDidMount() {
     this.setState({
       ballot: this.props.ballot,
       votes: this.props.votes
+    })
+  }
+
+  updateMatch(id) {
+    this.setState({
+      match: id
     })
   }
 
@@ -114,9 +122,9 @@ class Ballot extends React.Component {
 
         <div className="col-md-4 vote-form">
           <h4>Add an album:</h4>
-          <VoteForm updateResults={this.getResults}/>
+          <VoteForm updateResults={this.getResults} ballotID={this.props.ballot.id} handleMatch={this.updateMatch} />
 
-          {this.state.results.length != 0 && <VoteResults albums={this.state.results} ballotID={this.state.ballot.id} voteHelper={this.addVote} />}
+          {this.state.results.length != 0 && <VoteResults albums={this.state.results} ballotID={this.state.ballot.id} voteHelper={this.addVote} match={this.state.match}/>}
         </div>
 
         <div className="col-md-8">
