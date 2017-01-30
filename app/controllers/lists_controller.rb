@@ -23,8 +23,7 @@ class ListsController < ApplicationController
 
   def show
     @list = List.find(params[:id])
-    x = @list.list_to_json
-    binding.pry
+    @list_data = @list.list_to_json
   end
 
   protected

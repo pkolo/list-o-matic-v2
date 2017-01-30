@@ -9,13 +9,22 @@ class List < ApplicationRecord
   validates :title, presence: true
   validates :maximum, presence: true
 
+  def list_to_json
+    json = {
+      id: self.id,
+      title: self.title,
+      voters: self.voters.select(:id, :username),
+      results: self.get_list_results
+    }
+  end
+
   def tally_results
     self.votes.each_with_object(Hash.new(0)) do |vote, memo|
       memo[vote.album_id] += ((self.maximum + 1) - vote.rank)
     end
   end
 
-  def list_to_json
+  def get_list_results
     album_points = self.tally_results
     album_points.inject([]) do |memo, (album_id, points)|
       memo << {
