@@ -5,10 +5,12 @@ class ListResults extends React.Component {
 
   render() {
     let results = this.props.results
-    debugger
-    
     return (
-      <h1>fuck</h1>
+      <div className="lit-results-container">
+        {results.map( (result) =>
+          <ListResult result={result} />
+        )}
+      </div>
     )
   }
 }
