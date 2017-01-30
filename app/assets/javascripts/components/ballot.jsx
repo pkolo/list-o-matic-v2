@@ -114,7 +114,7 @@ class Ballot extends React.Component {
 
         <div className="col-md-4 vote-form">
           <h4>Add an album:</h4>
-          <VoteForm updateResults={this.getResults}/>
+          <VoteForm updateResults={this.getResults} ballotID={this.props.ballot.id}/>
 
           {this.state.results.length != 0 && <VoteResults albums={this.state.results} ballotID={this.state.ballot.id} voteHelper={this.addVote} />}
         </div>

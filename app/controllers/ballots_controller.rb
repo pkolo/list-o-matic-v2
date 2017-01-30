@@ -22,8 +22,11 @@ class BallotsController < ApplicationController
   end
 
   def discog_search
+    list = Ballot.find(params[:ballot_id]).list
     results = album_search(params)
-    render json: results
+    album_ids = results["results"].map {|result| result["id"]}
+    match = album_ids & list.votes.pluck(:album_id)
+    render json: {match: match, results: results}
   end
 
   def album_info

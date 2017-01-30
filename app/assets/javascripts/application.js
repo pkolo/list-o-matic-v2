@@ -20,4 +20,3 @@
 //= require lodash
 //= require components
 //= require_tree .
-//= require ballots

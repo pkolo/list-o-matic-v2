@@ -14,10 +14,10 @@ Rails.application.routes.draw do
 
   resources :ballots, only: [:new, :create, :show] do
     resources :votes, only: [:create, :destroy]
+    post '/discog_search', to: 'ballots#discog_search'
   end
 
   post '/ballots/:ballot_id/sort_votes', to: 'ballots#sort_votes'
-  post '/discog_search', to: 'ballots#discog_search'
   post '/album_info', to: 'ballots#album_info'
 
 end
