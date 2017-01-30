@@ -16,7 +16,7 @@ class StaticBallot extends React.Component {
 
         <div className="votes-container static">
           {votes.map((vote) =>
-            <StaticVote vote={vote} key={vote.album_data.id} />
+            <StaticVote vote={vote} key={vote.id} />
           )}
         </div>
       </div>

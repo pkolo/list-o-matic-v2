@@ -6,9 +6,9 @@ class ListResults extends React.Component {
   render() {
     let results = this.props.results
     return (
-      <div className="lit-results-container">
+      <div className="list-results-container">
         {results.map( (result, i) =>
-          <ListResult result={result} key={result.album_data["id"]} rank={i+1}/>
+          <ListResult result={result} key={result.album_data.id} rank={i+1}/>
         )}
       </div>
     )
