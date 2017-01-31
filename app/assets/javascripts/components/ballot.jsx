@@ -125,6 +125,8 @@ class Ballot extends React.Component {
           <VoteForm updateResults={this.getResults} ballotID={this.props.ballot.id} handleMatch={this.updateMatch} />
 
           {this.state.results.length != 0 && <VoteResults albums={this.state.results} ballotID={this.state.ballot.id} voteHelper={this.addVote} match={this.state.match}/>}
+
+          {this.state.votes && this.state.votes.length < this.props.list.minimum && <p>You need to add at least {this.props.list.minimum} albums</p>}
         </div>
         <h4>Your ballot for <a href={"/lists/" + this.props.list.id}>{this.props.list.title}</a></h4>
         <div className="col-md-8">
