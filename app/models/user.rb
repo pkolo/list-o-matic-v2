@@ -8,4 +8,8 @@ class User < ApplicationRecord
   has_many :ballots, foreign_key: 'voter_id'
   has_many :lists_voted_on, through: :ballots, source: :list
   has_many :votes, through: :ballots
+
+  validates :username, presence: true
+  validates :username, uniqueness: true
+
 end
