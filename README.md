@@ -1,24 +1,7 @@
-# README
+# List-O-Matic
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+https://list-o-matic.herokuapp.com
 
-Things you may want to cover:
+List-O-Matic is a wonderful web app that compiles users' ranked albums lists into an overall ranked list!
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Useful, for example, to message boards that want to compile their "Top 200 Albums of All Time" or "Top 50 Albums of 2016". OK so it's pretty niche but at least it works and MY message board is using it.
