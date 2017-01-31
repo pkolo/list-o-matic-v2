@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170130220744) do
+ActiveRecord::Schema.define(version: 20170131005651) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 20170130220744) do
     t.integer  "maximum"
     t.integer  "owner_id"
     t.boolean  "open",       default: true
+    t.integer  "minimum",    default: 10
   end
 
   create_table "users", force: :cascade do |t|

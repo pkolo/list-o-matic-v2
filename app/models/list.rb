@@ -8,6 +8,7 @@ class List < ApplicationRecord
 
   validates :title, presence: true
   validates :maximum, presence: true
+  validates :minimum, presence: true
 
   def list_to_json
     json = {
