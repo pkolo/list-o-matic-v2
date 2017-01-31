@@ -41,7 +41,7 @@ class ListsController < ApplicationController
   protected
 
     def list_params
-      params.require(:list).permit(:title, :maximum)
+      params.require(:list).permit(:title, :maximum, :minimum)
     end
 
 end

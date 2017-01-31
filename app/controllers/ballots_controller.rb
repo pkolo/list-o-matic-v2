@@ -4,6 +4,7 @@ class BallotsController < ApplicationController
   include BallotsHelper
 
   def create
+    binding.pry
     @ballot = Ballot.new
     @ballot.list = List.find(params[:list_id].to_i)
     @ballot.voter = current_user
