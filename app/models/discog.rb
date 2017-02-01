@@ -1,0 +1,3 @@
+class Discog < ApplicationRecord
+  
+end
