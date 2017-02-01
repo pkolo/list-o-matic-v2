@@ -19,7 +19,6 @@ class BallotsController < ApplicationController
     else
       @votes = @ballot.votes.sort_by {|vote| vote['rank']}
       render 'show'
-
     end
   end
 
