@@ -34,8 +34,8 @@ class Vote extends React.Component {
         </div>
 
         <div className="col-md-10 vote-info">
-          <p className="title">{this.props.vote.album_data.artists[0]["name"]} - {this.props.vote.album_data.title}</p>
-          <p className="other-album-info">{this.props.vote.album_data.year} | {this.props.vote.album_data.labels[0]["name"]}</p>
+          <p className="title">{this.props.vote.album_data.artist} - {this.props.vote.album_data.title}</p>
+          <p className="other-album-info">{this.props.vote.album_data.year} | {this.props.vote.album_data.label}</p>
         </div>
 
         <div className="delete-btn">
