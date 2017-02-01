@@ -116,6 +116,11 @@ class Ballot extends React.Component {
     })
   }
 
+  getBadMatch() {
+    let badMatch = _.map(this.state.votes, 'album_data["id"]')
+    return badMatch
+  }
+
   render() {
     return (
       <div className="ballot-container row">
@@ -124,7 +129,7 @@ class Ballot extends React.Component {
           <h4 className="ballot-title">Add an album:</h4>
           <VoteForm updateResults={this.getResults} ballotID={this.props.ballot.id} handleMatch={this.updateMatch} />
 
-          {this.state.results.length != 0 && <VoteResults albums={this.state.results} ballotID={this.state.ballot.id} voteHelper={this.addVote} match={this.state.match}/>}
+          {this.state.results.length != 0 && <VoteResults albums={this.state.results} ballotID={this.state.ballot.id} voteHelper={this.addVote} match={this.state.match} badMatch={this.getBadMatch()}/>}
 
           {this.state.votes && this.state.votes.length < this.props.list.minimum && <p>You need to add at least {this.props.list.minimum} albums</p>}
         </div>
