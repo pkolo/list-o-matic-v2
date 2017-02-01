@@ -24,7 +24,9 @@ class ListsController < ApplicationController
 
   def show
     @list = List.find(params[:id])
-    @list_data = @list.list_to_json
+    if !@list.open
+      @list_data = @list.list_to_json
+    end
   end
 
   def close_list

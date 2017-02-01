@@ -24,10 +24,10 @@
       <p>Created by: <%= @list.owner.username %></p>
 
       <p>Contributors so far:
-      <% @list_data[:voters].each do |voter| %>
-        <a href="/ballots/<%= voter[:ballot_id] %>"><%= voter[:username] %></a>
+      <% @list.voters.each do |voter| %>
+        <a href="/ballots/<%= voter.ballots.find_by(list: @list).id %>"><%= voter.username %></a>
       <% end %>
-    </p>
+      </p>
     </div>
 
     <div class="col-md-9">
