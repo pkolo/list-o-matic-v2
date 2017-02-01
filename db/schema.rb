@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170131005651) do
+ActiveRecord::Schema.define(version: 20170201182544) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,22 @@ ActiveRecord::Schema.define(version: 20170131005651) do
     t.integer  "list_id"
     t.integer  "voter_id"
     t.index ["list_id"], name: "index_ballots_on_list_id", using: :btree
+  end
+
+  create_table "discogs", force: :cascade do |t|
+    t.integer "album_id"
+    t.string  "artist"
+    t.string  "title"
+    t.string  "year"
+    t.string  "label"
+  end
+
+  create_table "discogs_tables", force: :cascade do |t|
+    t.integer "album_id"
+    t.string  "artist"
+    t.string  "title"
+    t.string  "year"
+    t.string  "label"
   end
 
   create_table "lists", force: :cascade do |t|

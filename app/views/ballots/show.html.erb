@@ -1,0 +1,15 @@
+<div class="static-ballot">
+  <h3><a href="/lists/<%= @ballot.list.id %>"><%= @ballot.list.title %></a> | <%= @ballot.voter.username %></h3>
+  <% @votes.each do |vote| %>
+    <div class="vote row" >
+      <div class="rank col-md-1">
+        <%= vote.rank %>
+      </div>
+
+      <div class="col-md-10 vote-info">
+        <p class="title"><%= vote.discog.artist %> - <i><%= vote.discog.title %></i></p>
+        <p class="other-album-info"><%= vote.discog.year %> | <%= vote.discog.label %></p>
+      </div>
+    </div>
+  <% end %>
+</div>
