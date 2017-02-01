@@ -3,6 +3,7 @@ class VoteResult extends React.Component {
     super()
 
     this.handleClick = this.handleClick.bind(this)
+    this.isBadMatch - this.isBadMatch.bind(this)
   }
 
   handleClick(e) {
@@ -15,13 +16,22 @@ class VoteResult extends React.Component {
     .done(function(r) {
       this.props.voteHelper(r)
     }.bind(this))
+    .error(function(e) {
+    })
+  }
+
+  isBadMatch() {
+    return _.includes(this.props.badMatch, this.props.album.id)
   }
 
   render(){
 
     let resultClass = ""
 
-    if (this.props.match[0] == this.props.album.id) {
+    if (this.isBadMatch()) {
+      resultClass = "result bad-match"
+    }
+    else if (this.props.match[0] == this.props.album.id) {
       resultClass = "result match"
     } else {
       resultClass = "result"
