@@ -4,11 +4,8 @@
   <div class="row">
 
     <div class="col-md-3">
-      <% if @list.open %>
-        <p>Voting for this list is still open...</p>
-      <% end %>
-
       <% if @list.owner == current_user && @list.open %>
+        <p>Voting for this list is still open...</p>
         <p><%= link_to "Close this list...", list_close_path(@list) %></p>
       <% end %>
 
@@ -34,7 +31,11 @@
     </div>
 
     <div class="col-md-9">
-      <%= react_component "ListResults", results: @list_data[:results].sort_by {|result| result[:points]}.reverse %>
+      <% if @list.open %>
+        <h3>Voting for this list is still open. Check back later to see the results.</h1>
+      <% else %>
+        <%= react_component "ListResults", results: @list_data[:results].sort_by {|result| result[:points]}.reverse %>
+      <% end %>
     </div>
 
   </div>
