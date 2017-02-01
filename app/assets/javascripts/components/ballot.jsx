@@ -117,7 +117,7 @@ class Ballot extends React.Component {
   }
 
   getBadMatch() {
-    let badMatch = _.map(this.state.votes, 'album_data["id"]')
+    let badMatch = _.map(this.state.votes, 'album_data["album_id"]')
     return badMatch
   }
 
