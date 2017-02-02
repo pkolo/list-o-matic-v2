@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170202160407) do
+ActiveRecord::Schema.define(version: 20170202213230) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,8 @@ ActiveRecord::Schema.define(version: 20170202160407) do
     t.string  "title"
     t.string  "year"
     t.string  "label"
+    t.string  "video_url", default: ""
+    t.string  "img_url",   default: ""
   end
 
   create_table "lists", force: :cascade do |t|
