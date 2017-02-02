@@ -9,6 +9,9 @@
   <%= f.label "Maximum number of albums" %>
   <%= f.number_field :maximum %>
 
+  <%= f.label "Guidelines" %><br />
+  <%= f.text_area(:notes, cols: 65, rows: 10) %>
+
   <%= f.submit %>
 
 <% end %>
