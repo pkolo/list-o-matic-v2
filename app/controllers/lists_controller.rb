@@ -37,7 +37,6 @@ class ListsController < ApplicationController
   def update
     @list = List.find(params[:id])
     @list.update(list_params)
-        binding.pry
     redirect_to @list
   end
 
