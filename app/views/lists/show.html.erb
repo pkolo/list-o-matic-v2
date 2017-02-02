@@ -7,7 +7,7 @@
       <p><b>Created by:</b> <%= @list.owner.username %></p>
 
       <% if @list.notes != "" %>
-        <p><b>Guidelines:</b></p>
+        <p class="sidebar-title">Guidelines:</p>
         <p><%= @list.notes %></p>
       <% end %>
 
@@ -28,7 +28,8 @@
         <p><%= link_to "Log in to contribute", '/login' %></p>
       <% end %>
 
-      <p>Contributors so far:
+      <p class="sidebar-title">Contributors so far:</p>
+      <p>
       <% @list.voters.each do |voter| %>
         <a href="/ballots/<%= voter.ballots.find_by(list: @list).id %>"><%= voter.username %></a>
       <% end %>
