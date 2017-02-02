@@ -4,9 +4,15 @@
   <div class="row">
 
     <div class="col-md-3">
+      <p><b>Created by:</b> <%= @list.owner.username %></p>
+
+      <% if @list.notes != "" %>
+        <p class="sidebar-title">Guidelines:</p>
+        <p><%= @list.notes %></p>
+      <% end %>
+
       <% if @list.owner == current_user && @list.open %>
-        <p>Voting for this list is still open...</p>
-        <p><%= link_to "Close this list...", list_close_path(@list) %></p>
+        <%= render 'options' %>
       <% end %>
 
       <% if @list.voters.include?(current_user) %>
@@ -21,9 +27,9 @@
       <% else %>
         <p><%= link_to "Log in to contribute", '/login' %></p>
       <% end %>
-      <p>Created by: <%= @list.owner.username %></p>
 
-      <p>Contributors so far:
+      <p class="sidebar-title">Contributors so far:</p>
+      <p>
       <% @list.voters.each do |voter| %>
         <a href="/ballots/<%= voter.ballots.find_by(list: @list).id %>"><%= voter.username %></a>
       <% end %>

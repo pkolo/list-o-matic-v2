@@ -29,6 +29,18 @@ class ListsController < ApplicationController
     end
   end
 
+  def edit
+    @list = List.find(params[:id])
+    redirect_to @list unless current_user == @list.owner
+  end
+
+  def update
+    @list = List.find(params[:id])
+    @list.update(list_params)
+        binding.pry
+    redirect_to @list
+  end
+
   def close_list
     @list = List.find(params[:list_id])
     if @list.owner == current_user
@@ -36,14 +48,14 @@ class ListsController < ApplicationController
       @list.save
       redirect_to @list
     else
-      render json: {error: "unauthorized"}
+      redirect_to @list
     end
   end
 
   protected
 
     def list_params
-      params.require(:list).permit(:title, :maximum, :minimum)
+      params.require(:list).permit(:title, :maximum, :minimum, :notes)
     end
 
 end

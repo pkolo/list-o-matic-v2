@@ -1,16 +1,3 @@
 <h1>Create a new list...</h1>
 
-<%= form_for @list do |f| %>
-
-  <%= f.label :title %>
-  <%= f.text_field :title %>
-
-  <%= f.label "Minimum number of albums" %>
-  <%= f.number_field :minimum %>
-
-  <%= f.label "Maximum number of albums" %>
-  <%= f.number_field :maximum %>
-
-  <%= f.submit %>
-
-<% end %>
+<%= render 'form' %>
