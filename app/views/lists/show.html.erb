@@ -4,6 +4,8 @@
   <div class="row">
 
     <div class="col-md-3">
+      <p>Created by: <%= @list.owner.username %></p>
+
       <% if @list.owner == current_user && @list.open %>
         <%= render 'options' %>
       <% end %>
@@ -20,7 +22,6 @@
       <% else %>
         <p><%= link_to "Log in to contribute", '/login' %></p>
       <% end %>
-      <p>Created by: <%= @list.owner.username %></p>
 
       <p>Contributors so far:
       <% @list.voters.each do |voter| %>
