@@ -3,8 +3,7 @@ module BallotsHelper
   def copy_data(ballot)
     ballot.votes.each do |vote|
       album_data = self.get_album_data(vote.album_id)
-      new_discog = Discog.new(album_id: vote.album_id, year: album_data["year"], title: album_data["title"], artist: album_data["artists"][0]["name"], label: album_data["labels"][0]["name"])
-      new_discog.save
+      discog = Discog.find_or_create_by(album_id: vote.album_id, year: album_data["year"], title: album_data["title"], artist: album_data["artists"][0]["name"], label: album_data["labels"][0]["name"])
     end
   end
 
