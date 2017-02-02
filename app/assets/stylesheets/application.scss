@@ -71,14 +71,14 @@
     margin-right: 5px;
     background-color: #fff;
     border: 1px black solid;
-    padding-top:10px;
+    padding-top:5px;
     padding-left: 10px;
     font-size: 1em;
   }
 
   .rank {
     padding: 0px;
-    font-size: 48px;
+    font-size: 36px;
   }
 
   .vote-info {
@@ -86,7 +86,12 @@
   }
 
   .title {
-    font-size:1.4em;
+    font-size:1.3em;
+    margin-bottom: 5px;
+  }
+
+  .other-album-info {
+    margin-bottom: 5px;
   }
 
   .list-result {
