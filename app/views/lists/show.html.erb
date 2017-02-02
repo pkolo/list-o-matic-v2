@@ -40,7 +40,7 @@
       <% if @list.open %>
         <h3>Voting for this list is still open. Check back later to see the results.</h1>
       <% else %>
-        <%= react_component "ListResults", results: @list_data[:results].sort_by {|result| result[:points]}.reverse.first(@list.maximum) %>
+        <%= react_component "ListResults", results: @list_data[:results].sort_by {|result| result[:points]}.reverse %>
       <% end %>
     </div>
 
