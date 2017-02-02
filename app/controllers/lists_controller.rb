@@ -31,6 +31,7 @@ class ListsController < ApplicationController
 
   def edit
     @list = List.find(params[:id])
+    redirect_to @list unless current_user == @list.owner
   end
 
   def close_list
