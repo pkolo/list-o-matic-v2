@@ -41,7 +41,7 @@ class ListsController < ApplicationController
       @list.save
       redirect_to @list
     else
-      render json: {error: "unauthorized"}
+      redirect_to @list
     end
   end
 
