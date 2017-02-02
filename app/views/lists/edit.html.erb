@@ -2,6 +2,8 @@
   <h1>Editing <%= @list.title %></h1>
 
   <%= render 'form' %>
+
+  <p><%= link_to "Back to list...", @list %>
 <% else %>
   <h3>You are not authorized to view this page...</h3>
 <% end %>
