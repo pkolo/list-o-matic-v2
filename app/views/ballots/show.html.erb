@@ -1,7 +1,7 @@
 <div class="static-ballot">
   <h3><a href="/lists/<%= @ballot.list.id %>"><%= @ballot.list.title %></a> | <%= @ballot.voter.username %></h3>
   <% @votes.each do |vote| %>
-    <div class="vote row" >
+    <div class="vote row rowfix" >
       <div class="rank col-md-1">
         <%= vote.rank %>
       </div>
