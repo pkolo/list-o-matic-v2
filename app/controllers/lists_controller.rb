@@ -37,6 +37,7 @@ class ListsController < ApplicationController
   def update
     @list = List.find(params[:id])
     @list.update(list_params)
+        binding.pry
     redirect_to @list
   end
 
@@ -54,7 +55,7 @@ class ListsController < ApplicationController
   protected
 
     def list_params
-      params.require(:list).permit(:title, :maximum, :minimum)
+      params.require(:list).permit(:title, :maximum, :minimum, :notes)
     end
 
 end

@@ -31,14 +31,6 @@ ActiveRecord::Schema.define(version: 20170202160407) do
     t.string  "label"
   end
 
-  create_table "discogs_tables", force: :cascade do |t|
-    t.integer "album_id"
-    t.string  "artist"
-    t.string  "title"
-    t.string  "year"
-    t.string  "label"
-  end
-
   create_table "lists", force: :cascade do |t|
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
@@ -47,7 +39,7 @@ ActiveRecord::Schema.define(version: 20170202160407) do
     t.integer  "owner_id"
     t.boolean  "open",       default: true
     t.integer  "minimum",    default: 10
-    t.text     "notes"
+    t.text     "notes",      default: ""
   end
 
   create_table "users", force: :cascade do |t|

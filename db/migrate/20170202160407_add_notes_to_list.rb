@@ -1,5 +1,5 @@
 class AddNotesToList < ActiveRecord::Migration[5.0]
   def change
-    add_column :lists, :notes, :text
+    add_column :lists, :notes, :text, default: ""
   end
 end
