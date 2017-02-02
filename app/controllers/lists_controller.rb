@@ -26,6 +26,7 @@ class ListsController < ApplicationController
     @list = List.find(params[:id])
     if !@list.open
       @list_data = @list.list_to_json
+      binding.pry
     end
   end
 

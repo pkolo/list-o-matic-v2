@@ -20,7 +20,7 @@ class List < ApplicationRecord
   end
 
   def tally_results
-    self.votes.each_with_object(Hash.new(0)) do |vote, memo|
+    self.votes.where('rank <= ?', self.maximum).each_with_object(Hash.new(0)) do |vote, memo|
       memo[vote.album_id] += ((self.maximum + 1) - vote.rank)
     end
   end
