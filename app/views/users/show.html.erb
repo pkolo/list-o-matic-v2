@@ -1,0 +1,19 @@
+
+
+<% if @user.owned_lists.any? %>
+  <h3>Lists <%= @user.username.capitalize %> started</h3>
+  <ul>
+    <% @user.owned_lists.each do |list| %>
+      <li><%= link_to list.title, list_path(list) %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<% if @user.ballots.any? %>
+  <h3><%= @user.username.capitalize %>'s Contributions</h3>
+  <ul>
+    <% @user.ballots.each do |ballot| %>
+      <li><%= link_to ballot.list.title, ballot_path(ballot) %></li>
+    <% end %>
+  </ul>
+<% end %>
