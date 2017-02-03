@@ -6,7 +6,7 @@ class Review extends React.Component {
   showReview() {
     if (this.props.review == "") {
       return (
-        <ReviewForm createReview={this.props.createReview}/>
+        <ReviewForm review={this.props.review} updateReview={this.props.createReview}/>
       )
     } else {
       return (
