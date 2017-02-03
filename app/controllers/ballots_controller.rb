@@ -14,7 +14,7 @@ class BallotsController < ApplicationController
   def show
     @ballot = Ballot.find(params[:id])
     if @ballot.voter == current_user
-      @votes = @ballot.votes.map { |vote| { rank: vote.rank, id: vote.id, album_data: vote.discog }}
+      @votes = @ballot.votes.map { |vote| { rank: vote.rank, id: vote.id, album_data: vote.discog, review: vote.review }}
       render component: 'Ballot', props: { ballot: @ballot, votes: @votes, list: @ballot.list }
     else
       @votes = @ballot.votes.sort_by {|vote| vote['rank']}
