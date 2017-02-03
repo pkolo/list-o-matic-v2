@@ -20,7 +20,7 @@ class Votes extends React.Component {
     return(
       <div className="votes-container">
         {votes.map((vote) =>
-          <Vote vote={vote} ballotID={this.props.ballotID} key={vote.album_data.album_id} handleDelete={this.props.handleDelete}/>
+          <Vote vote={vote} ballotID={this.props.ballotID} key={vote.album_data.album_id} handleDelete={this.props.handleDelete} review={this.props.review}/>
         )}
       </div>
     )

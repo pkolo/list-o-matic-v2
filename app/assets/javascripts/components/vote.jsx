@@ -11,6 +11,12 @@ class Vote extends React.Component {
     this.addReview = this.addReview.bind(this)
   }
 
+  componentDidMount() {
+    this.setState({
+      review: this.props.vote.review
+    })
+  }
+
   handleHover() {
     if (this.state.showDelete) {
       this.setState({
@@ -49,8 +55,9 @@ class Vote extends React.Component {
       method: 'put',
       data: params
     })
-    .done(function(r) {
-      console.log("updated!")
+
+    this.setState({
+      review: review
     })
   }
 
@@ -78,7 +85,7 @@ class Vote extends React.Component {
         </div>
 
         <div className="row">
-          {this.state.showReview && <Review createReview={this.addReview} review={this.props.vote.review}/>}
+          {this.state.showReview && <Review createReview={this.addReview} review={this.props.vote.review} />}
         </div>
       </div>
     )
