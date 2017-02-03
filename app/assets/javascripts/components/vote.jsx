@@ -2,10 +2,12 @@ class Vote extends React.Component {
   constructor() {
     super()
     this.state = ({
-      showDelete: false
+      showDelete: false,
+      showReviewForm: false
     })
     this.handleHover = this.handleHover.bind(this)
     this.handleClick = this.handleClick.bind(this)
+    this.handleReviewClick = this.handleReviewClick.bind(this)
   }
 
   handleHover() {
@@ -23,6 +25,18 @@ class Vote extends React.Component {
   handleClick(e) {
     let vote = this.props.vote
     this.props.handleDelete(vote)
+  }
+
+  handleReviewClick(e) {
+    if (this.state.showReviewForm) {
+      this.setState ({
+        showReviewForm: false
+      })
+    } else {
+      this.setState ({
+        showReviewForm: true
+      })
+    }
   }
 
   render() {
@@ -45,6 +59,8 @@ class Vote extends React.Component {
         <div className="review-btn">
           <button onClick={this.handleReviewClick}>+review</button>
         </div>
+
+        {this.state.showReviewForm && <ReviewForm />}
       </div>
     )
   }
