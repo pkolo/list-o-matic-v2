@@ -5,7 +5,12 @@ class ReviewForm extends React.Component {
 
   render() {
     return (
-      <h3>Hello</h3>
+      <div className="review-form">
+        <form action="#">
+          <textarea></textarea>
+          <input type="submit" />
+        </form>
+      </div>
     )
   }
 }
