@@ -23,6 +23,11 @@ class VotesController < ApplicationController
 
   end
 
+  def update
+    vote = Vote.find(params[:id])
+    vote.update_attribute(review: params[:review])
+  end
+
   def destroy
     vote = Vote.find(params[:id])
     vote.destroy
