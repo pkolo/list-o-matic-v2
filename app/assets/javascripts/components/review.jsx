@@ -10,7 +10,7 @@ class Review extends React.Component {
 
         </div>
         <div className="col-md-10 review">
-          <ReviewForm />
+          <ReviewForm createReview={this.props.createReview}/>
         </div>
       </div>
     )

@@ -39,6 +39,10 @@ class Vote extends React.Component {
     }
   }
 
+  addReview(review) {
+    console.log(review)
+  }
+
   render() {
     let voteID = "vote_" + this.props.vote.id
     return (
@@ -63,7 +67,7 @@ class Vote extends React.Component {
         </div>
 
         <div className="row">
-          {this.state.showReview && <Review />}
+          {this.state.showReview && <Review createReview={this.addReview}/>}
         </div>
       </div>
     )
