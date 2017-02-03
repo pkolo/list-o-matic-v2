@@ -1,5 +1,5 @@
 <div class="static-ballot">
-  <h3><a href="/lists/<%= @ballot.list.id %>"><%= @ballot.list.title %></a> | <%= @ballot.voter.username %></h3>
+  <h3><a href="/lists/<%= @ballot.list.id %>"><%= @ballot.list.title %></a> | <%= link_to @ballot.voter.username, user_path(@ballot.voter) %></h3>
   <% @votes.each do |vote| %>
     <div class="vote row rowfix" >
       <div class="rank col-md-1">
