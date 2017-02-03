@@ -41,6 +41,10 @@ class Vote extends React.Component {
         <div className="delete-btn">
           {this.state.showDelete && <button onClick={this.handleClick}>x</button>}
         </div>
+
+        <div className="review-btn">
+          <button onClick={this.handleReviewClick}>+review</button>
+        </div>
       </div>
     )
   }
