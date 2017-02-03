@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   end
 
   resources :ballots, only: [:new, :create, :show] do
-    resources :votes, only: [:create, :destroy]
+    resources :votes, only: [:create, :destroy, :update]
     post '/discog_search', to: 'ballots#discog_search'
   end
 
