@@ -3,6 +3,18 @@ class Review extends React.Component {
     super()
   }
 
+  showReview() {
+    if (this.props.review == "") {
+      return (
+        <ReviewForm createReview={this.props.createReview}/>
+      )
+    } else {
+      return (
+        <p>{this.props.review}</p>
+      )
+    }
+  }
+
   render() {
     return (
       <div className="review-container">
@@ -10,7 +22,7 @@ class Review extends React.Component {
 
         </div>
         <div className="col-md-10 review">
-          <ReviewForm createReview={this.props.createReview}/>
+          {this.showReview()}
         </div>
       </div>
     )

@@ -78,7 +78,7 @@ class Vote extends React.Component {
         </div>
 
         <div className="row">
-          {this.state.showReview && <Review createReview={this.addReview}/>}
+          {this.state.showReview && <Review createReview={this.addReview} review={this.props.vote.review}/>}
         </div>
       </div>
     )
