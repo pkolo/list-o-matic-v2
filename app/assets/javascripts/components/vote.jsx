@@ -8,6 +8,7 @@ class Vote extends React.Component {
     this.handleHover = this.handleHover.bind(this)
     this.handleClick = this.handleClick.bind(this)
     this.handleReviewClick = this.handleReviewClick.bind(this)
+    this.addReview = this.addReview.bind(this)
   }
 
   handleHover() {
@@ -40,7 +41,17 @@ class Vote extends React.Component {
   }
 
   addReview(review) {
-    console.log(review)
+    let ballotID = this.props.ballotID
+    let voteID = this.props.vote.id
+    let params = { review: review }
+    $.ajax({
+      url: '/ballots/'+ballotID+'/votes/'+voteID,
+      method: 'put',
+      data: params
+    })
+    .done(function(r) {
+      console.log("updated!")
+    })
   }
 
   render() {
