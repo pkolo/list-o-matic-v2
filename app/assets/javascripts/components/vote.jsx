@@ -47,6 +47,7 @@ class Vote extends React.Component {
   }
 
   addReview(review) {
+
     let ballotID = this.props.ballotID
     let voteID = this.props.vote.id
     let params = { review: review }
@@ -85,7 +86,7 @@ class Vote extends React.Component {
         </div>
 
         <div className="row">
-          {this.state.showReview && <Review createReview={this.addReview} review={this.props.vote.review} />}
+          {this.state.showReview && <Review createReview={this.addReview} review={this.state.review} />}
         </div>
       </div>
     )
