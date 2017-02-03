@@ -3,7 +3,7 @@ class Vote extends React.Component {
     super()
     this.state = ({
       showDelete: false,
-      showReviewForm: false
+      showReview: false
     })
     this.handleHover = this.handleHover.bind(this)
     this.handleClick = this.handleClick.bind(this)
@@ -28,13 +28,13 @@ class Vote extends React.Component {
   }
 
   handleReviewClick(e) {
-    if (this.state.showReviewForm) {
+    if (this.state.showReview) {
       this.setState ({
-        showReviewForm: false
+        showReview: false
       })
     } else {
       this.setState ({
-        showReviewForm: true
+        showReview: true
       })
     }
   }
@@ -63,7 +63,7 @@ class Vote extends React.Component {
         </div>
 
         <div className="row">
-          {this.state.showReviewForm && <ReviewForm />}
+          {this.state.showReview && <Review />}
         </div>
       </div>
     )
