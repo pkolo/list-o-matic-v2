@@ -31,14 +31,14 @@
       <p class="sidebar-title">Contributions:</p>
       <p>
       <% @list.voters.each do |voter| %>
-        <a href="/ballots/<%= voter.ballots.find_by(list: @list).id %>"><%= voter.username %></a>
+        <div><a href="/ballots/<%= voter.ballots.find_by(list: @list).id %>"><%= voter.username %></a></div>
       <% end %>
       </p>
     </div>
 
     <div class="col-md-9">
       <% if @list.open %>
-        <h3>Voting for this list is still open. Check back later to see the results.</h3>
+        <h2>Voting for this list is still open. Check back later to see the results.</h2>
         <%= react_component "LatestReviews", reviews: @list.reviews %>
       <% else %>
         <%= react_component "ListResults", results: @list_data[:results].sort_by {|result| result[:points]}.reverse %>

@@ -58,7 +58,8 @@ class Vote extends React.Component {
     })
 
     this.setState({
-      review: review
+      review: review,
+      showReview: false
     })
   }
 

@@ -22,7 +22,7 @@ class Review extends React.Component {
 
         </div>
         <div className="col-md-10 review">
-          {this.showReview()}
+          <ReviewForm review={this.props.review} updateReview={this.props.createReview}/>
         </div>
       </div>
     )
