@@ -12,11 +12,21 @@ class ListResult extends React.Component {
     )
   }
 
+  getReviews() {
+    let reviews = this.props.result.reviews.map( (review) =>
+      <div className="review" key={review.ballot_id}>
+        {review.review} - <a href={"/ballots/"+review.ballot_id} key={review.ballot_id}>{review.username}</a>
+      </div>
+    )
+    return (
+      reviews
+    )
+  }
+
   render() {
     let result = this.props.result
-    let artists = _.map(result.album_data.artists, 'name')
-    let labels = _.map(result.album_data.labels, 'name')
     let voters = this.getVoterLinks()
+    let reviews = this.getReviews()
 
     return (
       <div className="list-result row">
@@ -26,9 +36,12 @@ class ListResult extends React.Component {
         </div>
 
         <div className="result-container">
-          <p className="result-title">{_.join(artists, ', ')} - <i>{result.album_data.title}</i></p>
-          <p className="result-info">{result.album_data.year} | {_.join(labels, ', ')}</p>
+          <p className="result-title">{result.album_data.artist} - <i>{result.album_data.title}</i></p>
+          <p className="result-info">{result.album_data.year} | {result.album_data.label}</p>
           <p>{result.points} points | {voters}</p>
+          <div className="reviews">
+            {reviews}
+          </div>
         </div>
       </div>
     )

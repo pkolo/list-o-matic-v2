@@ -19,20 +19,21 @@ class List < ApplicationRecord
     }
   end
 
-  def tally_results
-    self.votes.select {|vote| vote.ballot.votes.length >= self.minimum }.select {|vote| vote.rank <= self.maximum}.each_with_object(Hash.new(0)) do |vote, memo|
-      memo[vote.album_id] += ((self.maximum + 1) - vote.rank)
-    end
-  end
-
   def get_list_results
     album_points = self.tally_results
     album_points.inject([]) do |memo, (album_id, points)|
       memo << {
-        album_data: get_album_data(album_id),
+        album_data: Discog.find_by(album_id: album_id),
         points: points,
-        voters: self.get_album_voters(album_id)
+        voters: self.get_album_voters(album_id),
+        reviews: self.get_album_reviews(album_id)
       }
+    end
+  end
+
+  def tally_results
+    self.votes.select {|vote| vote.ballot.votes.length >= self.minimum }.select {|vote| vote.rank <= self.maximum}.each_with_object(Hash.new(0)) do |vote, memo|
+      memo[vote.album_id] += ((self.maximum + 1) - vote.rank)
     end
   end
 
@@ -51,6 +52,21 @@ class List < ApplicationRecord
       end
       memo
     end
+  end
+
+  def get_album_reviews(id)
+    reviews = self.votes.select {|vote| vote.album_id == id && vote.review != "" }
+    reviews.inject([]) do |memo, vote|
+      memo << {review: vote.review, username: vote.ballot.voter.username, ballot_id: vote.ballot.id}
+    end
+  end
+
+  def reviews
+    reviews = self.votes.select { |vote| vote.review != "" }
+    new_reviews = reviews.inject([]) do |memo, vote|
+      memo << {review: vote.review, username: vote.ballot.voter.username, ballot_id: vote.ballot.id, artist: vote.discog.artist, title: vote.discog.title }
+    end
+    new_reviews
   end
 
 end
