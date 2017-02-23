@@ -61,4 +61,12 @@ class List < ApplicationRecord
     end
   end
 
+  def reviews
+    reviews = self.votes.select { |vote| vote.review != "" }
+    new_reviews = reviews.inject([]) do |memo, vote|
+      memo << {review: vote.review, username: vote.ballot.voter.username, ballot_id: vote.ballot.id, artist: vote.discog.artist, title: vote.discog.title }
+    end
+    new_reviews
+  end
+
 end
