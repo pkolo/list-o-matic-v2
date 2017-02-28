@@ -39,7 +39,7 @@
     <div class="col-md-9">
       <% if @list.open %>
         <h2>Voting for this list is still open. Check back later to see the results.</h2>
-        <%= react_component "LatestReviews", reviews: @list.reviews %>
+        <%= react_component "LatestReviews", reviews: @list.reviews.sort_by {|review| review[:created_at]}.reverse[0..25] %>
       <% else %>
         <%= react_component "ListResults", results: @list_data[:results].sort_by {|result| result[:points]}.reverse %>
       <% end %>
